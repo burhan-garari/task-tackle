@@ -1,9 +1,34 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from 'next/font/local';
 import "./globals.css";
-// import * as stylex from "@stylexjs/stylex";
 
-const inter = Inter({ subsets: ["latin"] });
+const isoveka = localFont({
+  src: [
+    {
+      path: '../public/fonts/iosevka/IosevkaFixed-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/iosevka/IosevkaFixed-Italic.woff2',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: '../public/fonts/iosevka/IosevkaFixed-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/iosevka/IosevkaFixed-ExtendedBoldItalic.woff2',
+      weight: '700',
+      style: 'italic',
+    },
+  ],
+  display: 'swap',
+  variable:'--font-isoveka'
+})
+
 
 export const metadata: Metadata = {
   title: "Task Tackle",
@@ -16,10 +41,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html  lang="en">
-      <body >{children}</body>
+    <html  lang="en" className={`${isoveka.className}`}>
+      <body>{children}</body>
     </html>
   );
 }
 
 const DARK = '@media (prefers-color-scheme: dark)';
+
