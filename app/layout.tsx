@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from 'next/font/local';
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const isoveka = localFont({
   src: [
@@ -41,9 +42,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html  lang="en" className={`${isoveka.className}`}>
-      <body>{children}</body>
-    </html>
+    <ClerkProvider>
+        <html  lang="en" className={`${isoveka.className}`}>
+          <body className="h-full">{children}</body>
+        </html>
+    </ClerkProvider>
+
   );
 }
 
